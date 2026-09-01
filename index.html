@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maus · Galería</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Cabecera fija: navegación directa a cada sala, visible en todas las secciones -->
+    <header class="site-header" id="siteHeader">
+        <div class="site-header__logo">
+            <span class="name">Maus</span>
+            <span class="tag">Artista &amp; homosexual</span>
+        </div>
+        <nav class="site-header__nav" id="siteNav">
+            <button class="site-header__link" data-jump="1">Inicio</button>
+            <button class="site-header__link" data-jump="2">Galería</button>
+            <button class="site-header__link" data-jump="3">Encargos</button>
+            <button class="site-header__link" data-jump="4">Tarifas</button>
+            <button class="site-header__link" data-jump="5">Contacto</button>
+        </nav>
+        <div class="site-header__social">
+            <a href="https://twitter.com/" target="_blank" rel="noopener" aria-label="Twitter / X">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M21 4.6c-.7.4-1.5.6-2.3.8a3.6 3.6 0 0 0-6.2 3.3A10.2 10.2 0 0 1 5 4.9a3.6 3.6 0 0 0 1.1 4.8c-.6 0-1.2-.2-1.7-.5v.1c0 1.8 1.2 3.3 2.9 3.6a3.6 3.6 0 0 1-1.6.1 3.6 3.6 0 0 0 3.3 2.5A7.2 7.2 0 0 1 3 16.9a10.2 10.2 0 0 0 5.5 1.6c6.6 0 10.2-5.5 10.2-10.2v-.5c.7-.5 1.3-1.1 1.8-1.8-.6.3-1.3.5-2 .6.7-.5 1.3-1.1 1.5-2Z"
+                        stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none" />
+                </svg>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" stroke-width="1.6" />
+                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+                    <circle cx="17.2" cy="6.8" r="1" fill="currentColor" />
+                </svg>
+            </a>
+            <a href="https://discord.com/" target="_blank" rel="noopener" aria-label="Discord">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M7 8.5c3-1.4 7-1.4 10 0M6.5 15c3.2 1.2 7.8 1.2 11 0M8.5 9.5c-2 .5-3.3 3-3.3 6.5 0 0 1.7 2 4.3 2l1-1.6M15.5 9.5c2 .5 3.3 3 3.3 6.5 0 0-1.7 2-4.3 2l-1-1.6"
+                        stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                    <circle cx="9.3" cy="12.3" r="1" fill="currentColor" />
+                    <circle cx="14.7" cy="12.3" r="1" fill="currentColor" />
+                </svg>
+            </a>
+        </div>
+        <button class="site-header__burger" id="siteBurger" aria-label="Abrir menú">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+        </button>
+    </header>
+
+    <!-- SPRITE: iconos reutilizables -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+            <symbol id="i-spark" viewBox="0 0 40 40">
+                <path
+                    d="M20 2c1 8 3 14 5 16s8 4 13 5c-8 1-14 3-16 5s-4 8-5 13c-1-8-3-14-5-16s-8-4-13-5c8-1 14-3 16-5s4-8 5-13Z"
+                    fill="currentColor" />
+            </symbol>
+            <symbol id="i-sun" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4" fill="currentColor" />
+                <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                    <line x1="12" y1="1" x2="12" y2="4" />
+                    <line x1="12" y1="20" x2="12" y2="23" />
+                    <line x1="1" y1="12" x2="4" y2="12" />
+                    <line x1="20" y1="12" x2="23" y2="12" />
+                    <line x1="4.2" y1="4.2" x2="6.3" y2="6.3" />
+                    <line x1="17.7" y1="17.7" x2="19.8" y2="19.8" />
+                    <line x1="4.2" y1="19.8" x2="6.3" y2="17.7" />
+                    <line x1="17.7" y1="6.3" x2="19.8" y2="4.2" />
+                </g>
+            </symbol>
+        </defs>
+    </svg>
+
+    <div class="viewport" id="viewport">
+        <div class="sections-container" id="sectionsContainer">
+
+            <!-- SECCIÓN 1 · Vestíbulo / Landing -->
+            <section class="section active room" id="section1" data-section="1">
+                <div class="room-texture"></div>
+                <div class="arc-line arc-line--1"></div>
+                <svg class="spark" style="top:12%; right:14%; width:34px; height:34px;">
+                    <use href="#i-spark" />
+                </svg>
+
+                <div class="hero">
+                    <div class="hero-copy">
+                        <span class="eyebrow">Ejemplo ejemplo ejemplo ejemplo</span>
+                        <h1 class="headline">Ejemplo, (hola mica)</h1>
+                        <div class="divider-mark">
+                            <span class="line"></span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" style="color:var(--gold)">
+                                <use href="#i-sun" />
+                            </svg>
+                            <span class="line"></span>
+                        </div>
+                        <p class="body-copy">Maus · Parrafo de ejemplo hola necesito escribir un poco aquí para testear
+                            los saltos de linea hola que tal hola hola hola que tal hola charlie kirk</p><br>
+                        <button class="btn-outline" id="btnEnter" type="button">
+                            <span>Ver los proyectos</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="hero-stage">
+                        <div class="vertical-label" style="right: 42%; top: 2%;">Nº 001</div>
+
+                        <!-- Recorte 2: dibujo de la clienta a la derecha, sin marco, sobre un halo
+                             suave para mantener la profundidad por capas. -->
+                        <div class="cutout-glow" style="width:64%; height:70%; right:0; top:6%;"></div>
+                        <!-- Recorte 1: dibujo emergiendo desde el centro-abajo de la pantalla. -->
+                        <img src="res/landing.png" alt="Ilustración de personaje — sustituir por obra real"
+                            class="cutout cutout--center">
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2 · Sala de obras (pared de fondo + panel liquid glass) -->
+            <section class="section room room--wall" id="section2" data-section="2"
+                style="transform: translateX(100%); pointer-events: none; z-index: 1;">
+                <div class="room-texture"></div>
+                <div class="arc-line arc-line--2"></div>
+
+                <div class="wall-bg" id="artWallBg">
+                    <figure class="wall-bg-piece" style="position: absolute; height: 50%; top: 5%; left: 4%;">
+                        <img src="res/c3edit.png" loading="lazy">
+                    </figure>
+                    <figure class="wall-bg-piece" style="position: absolute; height: 50%; top: 7%; left: 40%;">
+                        <img src="res/c11edit.png" loading="lazy">
+                    </figure>
+                    <figure class="wall-bg-piece" style="position: absolute; height: 50%; top: 4%; left: 70%;">
+                        <img src="res/c6edit.png" loading="lazy">
+                    </figure>
+                    <figure class="wall-bg-piece" style="position: absolute; height: 37%; top: 60%; left: 10%;">
+                        <img src="res/c10edit.png" loading="lazy">
+                    </figure>
+                    <figure class="wall-bg-piece" style="position: absolute; height: 37%; top: 60%; left: 30%;">
+                        <img src="res/c12edit.png" loading="lazy">
+                    </figure>
+                    <figure class="wall-bg-piece" style="position: absolute; height: 37%; top: 62%; left: 30%;">
+                        <img src="res/c12edit.png" loading="lazy">
+                    </figure>
+                    <figure class="wall-bg-piece" style="position: absolute; height: 37%; top: 60%; left: 50%;">
+                        <img src="res/c2edit.png" loading="lazy">
+                    </figure>
+                    <figure class="wall-bg-piece" style="position: absolute; height: 37%; top: 60%; left: 73%;">
+                        <img src="res/c5edit.png" loading="lazy">
+                    </figure>
+                </div>
+
+                <!-- PANEL LIQUID GLASS
+         Texto a la izquierda, obra principal a la derecha, botón ancho
+         debajo de la obra. Sustituye "obra-principal.png" por la pieza
+         destacada que quieras mostrar. -->
+                <div class="glass-panel">
+                    <div class="glass-panel__text">
+                        <span class="eyebrow">Galería</span>
+                        <h2 class="room-title">Mis trabajos</h2>
+                        <p class="room-sub">Una colección de todo el material que he creado tanto de práctica como de
+                            encargo para otras personas</p>
+                    </div>
+
+                    <div class="glass-panel__side">
+                        <div class="glass-panel__featured">
+                            <img src="res/c1.jpg" alt="Obra destacada" loading="lazy">
+                        </div>
+                        <button class="btn-glass-wide" id="btnOpenGallery" type="button">
+                            <span>Ver toda la colección</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.6"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3 · Términos (layout partido) -->
+            <section class="section room section--split" id="section3" data-section="3"
+                style="transform: translateY(100%); pointer-events: none; z-index: 1;">
+
+                <!-- MITAD IZQUIERDA · Intro + Imagen vertical -->
+                <div class="split-left">
+                    <div class="split-left__text">
+                        <span class="eyebrow">Terminos de Servicio</span>
+                        <h2 class="room-title">Antes de encargar</h2>
+                        <p class="room-sub">Te invito a leer mis términos de servicio, de esta manera ambos sabemos lo
+                            que esperamos del otro y el trabajo será mucho más fluido</p>
+                    </div>
+
+                    <div class="split-left__image">
+                        <img src="res/divToS.png" alt="Ilustración decorativa · reemplazar por imagen real">
+                    </div>
+
+                    <svg class="spark" style="bottom:12%; left:14%; width:26px; height:26px;">
+                        <use href="#i-spark" />
+                    </svg>
+                </div>
+
+                <div class="split-right">
+                    <div class="paper-sheet">
+                        <div class="terms-scroll terms-scroll--light">
+                            <div class="term-block">
+                                <span class="num">01</span>
+                                <div>
+                                    <h3>No se</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum porro, dolorum
+                                        esse quis quas velit inventore temporibus vero autem possimus eveniet eos
+                                        distinctio, totam sunt architecto nam sequi excepturi. Animi.</p>
+                                </div>
+                            </div>
+                            <div class="term-block">
+                                <span class="num">02</span>
+                                <div>
+                                    <h3>No se</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum porro, dolorum
+                                        esse quis quas velit inventore temporibus vero autem possimus eveniet eos
+                                        distinctio, totam sunt architecto nam sequi excepturi. Animi.</p>
+                                </div>
+                            </div>
+                            <div class="term-block">
+                                <span class="num">03</span>
+                                <div>
+                                    <h3>No se</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum porro, dolorum
+                                        esse quis quas velit inventore temporibus vero autem possimus eveniet eos
+                                        distinctio, totam sunt architecto nam sequi excepturi. Animi.</p>
+                                </div>
+                            </div>
+                            <div class="term-block">
+                                <span class="num">04</span>
+                                <div>
+                                    <h3>No se</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum porro, dolorum
+                                        esse quis quas velit inventore temporibus vero autem possimus eveniet eos
+                                        distinctio, totam sunt architecto nam sequi excepturi. Animi.</p>
+                                </div>
+                            </div>
+                            <div class="term-block">
+                                <span class="num">05</span>
+                                <div>
+                                    <h3>No se</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum porro, dolorum
+                                        esse quis quas velit inventore temporibus vero autem possimus eveniet eos
+                                        distinctio, totam sunt architecto nam sequi excepturi. Animi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4 · Precios -->
+            <section class="section room" id="section4" data-section="4"
+                style="transform: translateX(-100%); pointer-events: none; z-index: 1;">
+                <div class="room-texture"></div>
+                <div class="arc-line arc-line--4"></div>
+
+                <div class="inkwell inkwell--wide">
+                    <span class="eyebrow">Precios</span>
+                    <h2 class="room-title">Mis tarifas</h2>
+                    <p class="room-sub">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem sapiente
+                        quasi quaerat. Dolores incidunt amet eaque iure, iste aperiam accusamus ducimus eius. Ipsum
+                        eligendi placeat, necessitatibus rerum nisi porro nesciunt.</p>
+
+                    <!-- Cada .price-card es una entrada. Para añadir una tarifa nueva,
+                         copia un bloque .price-card completo y edita su contenido. -->
+                    <div class="pricing-row" id="pricingRow">
+                        <div class="price-card">
+                            <div class="price-card__ribbon">op1</div>
+                            <div class="price-card__amount">1<span>€</span></div>
+                            <div class="price-card__name">nombre</div>
+                            <p class="price-card__desc">desc</p>
+                        </div>
+                        <div class="price-card price-card--pop">
+                            <div class="price-card__ribbon">op2</div>
+                            <div class="price-card__amount">2<span>€</span></div>
+                            <div class="price-card__name">nombre</div>
+                            <p class="price-card__desc">desc
+                            </p>
+                        </div>
+                        <div class="price-card">
+                            <div class="price-card__ribbon">op3</div>
+                            <div class="price-card__amount">3<span>€</span></div>
+                            <div class="price-card__name">nombre</div>
+                            <p class="price-card__desc">desc</p>
+                        </div>
+                        <div class="price-card price-card--muted">
+                            <div class="price-card__ribbon">op34</div>
+                            <div class="price-card__amount">?<span></span></div>
+                            <div class="price-card__name">nombre</div>
+                            <p class="price-card__desc">desc</p>
+                        </div>
+                        <!--
+                        <div class="price-card">
+                            <div class="price-card__ribbon">nueva</div>
+                            <div class="price-card__amount">0<span>€</span></div>
+                            <div class="price-card__name">Nombre de la tarifa</div>
+                            <p class="price-card__desc">Descripción breve de qué incluye.</p>
+                        </div>
+                        -->
+                    </div>
+                    <p class="pricing-note">letra pequeña si quieres estafar</p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5 · Contacto -->
+            <section class="section room" id="section5" data-section="5"
+                style="transform: translateY(-100%); pointer-events: none; z-index: 1;">
+                <div class="room-texture"></div>
+                <div class="arc-line arc-line--5"></div>
+                <svg class="spark" style="top:14%; left:8%; width:28px; height:28px;">
+                    <use href="#i-spark" />
+                </svg>
+
+                <div class="inkwell inkwell--center">
+                    <span class="eyebrow">Contacto</span>
+                    <h2 class="room-title">Trabajemos juntos</h2>
+                    <p class="room-sub">Se me ha olvidado centrar este texto</p>
+
+                    <div class="contact-list">
+                        <a class="contact-item" href="mailto:hola@mausart.example">
+                            <span class="contact-item__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M3 6.5h18v11H3z" stroke="currentColor" stroke-width="1.6" />
+                                    <path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="contact-item__text">
+                                <strong>Correo</strong>
+                                <em>no se @ gmail</em>
+                            </span>
+                        </a>
+                        <a class="contact-item" href="https://vgen.co/" target="_blank" rel="noopener">
+                            <span class="contact-item__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 20 12 4l8 16H4Z" stroke="currentColor" stroke-width="1.6"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="contact-item__text">
+                                <strong>VGen</strong>
+                                <em>link vgen</em>
+                            </span>
+                        </a>
+                        <a class="contact-item" href="https://twitter.com/" target="_blank" rel="noopener">
+                            <span class="contact-item__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M21 4.6c-.7.4-1.5.6-2.3.8a3.6 3.6 0 0 0-6.2 3.3A10.2 10.2 0 0 1 5 4.9a3.6 3.6 0 0 0 1.1 4.8c-.6 0-1.2-.2-1.7-.5v.1c0 1.8 1.2 3.3 2.9 3.6a3.6 3.6 0 0 1-1.6.1 3.6 3.6 0 0 0 3.3 2.5A7.2 7.2 0 0 1 3 16.9a10.2 10.2 0 0 0 5.5 1.6c6.6 0 10.2-5.5 10.2-10.2v-.5c.7-.5 1.3-1.1 1.8-1.8-.6.3-1.3.5-2 .6.7-.5 1.3-1.1 1.5-2Z"
+                                        stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" fill="none" />
+                                </svg>
+                            </span>
+                            <span class="contact-item__text">
+                                <strong>Twitter / X</strong>
+                                <em>@paracuandohagasnsfw</em>
+                            </span>
+                        </a>
+                        <a class="contact-item" href="https://instagram.com/" target="_blank" rel="noopener">
+                            <span class="contact-item__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor"
+                                        stroke-width="1.6" />
+                                    <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+                                    <circle cx="17.2" cy="6.8" r="1" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <span class="contact-item__text">
+                                <strong>Instagram</strong>
+                                <em>@estelopodemosquitar</em>
+                            </span>
+                        </a>
+                        <a class="contact-item" href="https://discord.com/" target="_blank" rel="noopener">
+                            <span class="contact-item__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path
+                                        d="M7 8.5c3-1.4 7-1.4 10 0M6.5 15c3.2 1.2 7.8 1.2 11 0M8.5 9.5c-2 .5-3.3 3-3.3 6.5 0 0 1.7 2 4.3 2l1-1.6M15.5 9.5c2 .5 3.3 3 3.3 6.5 0 0-1.7 2-4.3 2l-1-1.6"
+                                        stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <circle cx="9.3" cy="12.3" r="1" fill="currentColor" />
+                                    <circle cx="14.7" cy="12.3" r="1" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <span class="contact-item__text">
+                                <strong>Discord</strong>
+                                <em>e-kitten</em>
+                            </span>
+                        </a>
+                    </div>
+                    <p class="availability">Disponibilidad actual: <strong>abierta</strong> · si no respondo enseguida,
+                        dame uno o dos días.</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="room-index" id="roomIndex" aria-hidden="true">
+            <span data-i="1"></span><span data-i="2"></span><span data-i="3"></span><span data-i="4"></span><span
+                data-i="5"></span>
+        </div>
+    </div>
+
+    <!-- Modal · galería completa -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
+        <div class="lightbox__panel">
+            <div class="lightbox__head">
+                <h3>Galería completa</h3>
+                <button class="lightbox__close" id="lightboxClose" aria-label="Cerrar">✕</button>
+            </div>
+            <div class="lightbox__scroll" id="lightboxScroll">
+                <figure class="lb-piece">
+                    <img src="res/c1.jpg" alt="Obra I">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c2.jpg" alt="Obra II">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c3.jpg" alt="Obra III">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c4.jpg" alt="Obra IV">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c5.jpg" alt="Obra V">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c6.jpg" alt="Obra VI">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c7.jpg" alt="Obra VI">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c8.jpg" alt="Obra VI">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c10.jpg" alt="Obra VI">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c11.jpg" alt="Obra VI">
+                </figure>
+                <figure class="lb-piece">
+                    <img src="res/c12.jpg" alt="Obra VI">
+                </figure>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
